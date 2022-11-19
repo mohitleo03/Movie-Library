@@ -10,7 +10,7 @@ export default function PopoverPopupState() {
       {(popupState) => (
         <div>
           <Button variant="contained" {...bindTrigger(popupState)}>
-            Create Popup
+            Create Movie List
           </Button>
           <Popover
             {...bindPopover(popupState)}

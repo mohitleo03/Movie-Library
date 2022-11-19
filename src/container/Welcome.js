@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { Constants } from "../utils/constants";
 import { useEffect } from "react";
+import { Box } from "@mui/system";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -15,32 +16,41 @@ const Welcome = () => {
     const time = localStorage.getItem("time_stamp");
     console.log(time);
     const last_time = new Date(time);
-    if (
-      current_time.getTime() - last_time.getTime() >
-      1000 * 60 * 60 * 24
-    ) {
-      console.log(current_time.getTime() - last_time.getTime())
+    if (current_time.getTime() - last_time.getTime() > 1000 * 60 * 60 * 24) {
+      console.log(current_time.getTime() - last_time.getTime());
       navigateTo(Constants.ROUTES.HOME);
     }
   }, []);
   return (
-    <div className="welcome-bg full-height">
-      <Button
-        onClick={() => {
-          navigateTo(Constants.ROUTES.LOGIN);
-        }}
-        variant="contained"
-      >
-        Sign In
-      </Button>
-      <Button
-        onClick={() => {
-          navigateTo(Constants.ROUTES.REGISTER);
-        }}
-        variant="outlined"
-      >
-        Sign Up
-      </Button>
+    <div
+      className="welcome-bg full-height"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Box mt={70} display="flex">
+        <Box mr={1}>
+          <Button
+            onClick={() => {
+              navigateTo(Constants.ROUTES.LOGIN);
+            }}
+            variant="contained"
+          >
+            Sign In
+          </Button>
+        </Box>
+        <Box ml={1}>
+          <Button
+            onClick={() => {
+              navigateTo(Constants.ROUTES.REGISTER);
+            }}
+            variant="outlined"
+          >
+            Sign Up
+          </Button>
+        </Box>
+      </Box>
     </div>
   );
 };
